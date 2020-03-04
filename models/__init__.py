@@ -8,7 +8,7 @@ def get_model(name, parameters):
 
     else:
 
-        raise 'Model {} not available'.format(args.arch)
+        print( 'Model {} not available')
 
 
 
