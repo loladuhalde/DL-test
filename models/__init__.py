@@ -1,17 +1,10 @@
 from models.Gaussian_Writing_GRU import Gaussian_Writing_GRU
 
 
-def get_model(args):
+def get_model(name, parameters):
 
-    model_instance = _get_model_instance(args.arch)
-
-
-
-    print('Fetching model %s - %s ' % (args.arch, args.model_name))
-
-    if args.arch == 'Gaussian_Writing_GRU':
-
-        model = model_instance(args.model_name, args.num_classes, args.input_channels, args.pretrained)
+    if name == 'Gaussian_Writing_GRU':
+        model = Gaussian_Writing_GRU(parameters["n_gaussian"], parameters["dropout"], parameters["rnn_size"])
 
     else:
 
@@ -22,12 +15,3 @@ def get_model(args):
     return model
 
 
-
-def _get_model_instance(name):
-
-    return {
-
-        'Gaussian_Writing_GRU': Gaussian_Writing_GRU
-
-
-    }[name]
